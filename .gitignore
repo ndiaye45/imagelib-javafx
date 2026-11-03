@@ -1,6 +1,6 @@
 target/
 *.class
-*.corrupt
 .idea/
 *.iml
-.vscode/
+.DS_Store
+*.log
