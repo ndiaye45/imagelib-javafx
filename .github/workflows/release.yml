@@ -1,0 +1,85 @@
+name: Release
+
+# Publie une application prête à lancer (sans JDK ni Maven à installer) pour Windows, macOS et Linux.
+# Déclenchement : git tag v1.0.0 && git push origin v1.0.0   (ou bouton « Run workflow » pour tester)
+on:
+  push:
+    tags: [ 'v*' ]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  package:
+    name: Application ${{ matrix.label }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { os: ubuntu-latest,  label: Linux,   archive: tar.gz }
+          - { os: windows-latest, label: Windows, archive: zip }
+          - { os: macos-latest,   label: macOS,   archive: zip }
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'      # le JDK 21 fournit jpackage
+          cache: maven
+
+      # 1. JAR du projet + toutes ses dépendances (les bibliothèques JavaFX natives de l'OS courant) dans target/libs
+      - name: Compiler, tester et rassembler les dépendances
+        shell: bash
+        run: |
+          mvn -B verify
+          mvn -B org.apache.maven.plugins:maven-dependency-plugin:3.8.1:copy-dependencies \
+              -DoutputDirectory=target/libs -DincludeScope=runtime
+          cp target/image-manager-*.jar target/libs/
+
+      # 2. Application autonome : embarque un runtime Java, donc rien à installer chez l'utilisateur
+      - name: Créer l'application avec jpackage
+        shell: bash
+        run: |
+          jpackage --type app-image \
+            --name GestionnaireImages \
+            --app-version 1.0.0 \
+            --vendor "Papa Youssou NDIAYE" \
+            --input target/libs \
+            --main-jar "$(basename target/image-manager-1.0.0.jar)" \
+            --main-class fr.ndiaye.imagelib.Launcher \
+            --dest dist
+
+      # 3. Archive à télécharger
+      - name: Archiver (Linux)
+        if: matrix.archive == 'tar.gz'
+        run: tar -czf GestionnaireImages-${{ matrix.label }}.tar.gz -C dist GestionnaireImages
+      - name: Archiver (Windows)
+        if: matrix.label == 'Windows'
+        shell: pwsh
+        run: Compress-Archive -Path dist/GestionnaireImages -DestinationPath GestionnaireImages-Windows.zip
+      - name: Archiver (macOS)
+        if: matrix.label == 'macOS'
+        run: ditto -c -k --sequesterRsrc --keepParent dist/GestionnaireImages.app GestionnaireImages-macOS.zip
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: GestionnaireImages-${{ matrix.label }}
+          path: GestionnaireImages-${{ matrix.label }}.${{ matrix.archive }}
+
+  publish:
+    name: Publier la Release
+    needs: package
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+          merge-multiple: true
+      - uses: softprops/action-gh-release@v2
+        with:
+          files: artifacts/*
+          generate_release_notes: true

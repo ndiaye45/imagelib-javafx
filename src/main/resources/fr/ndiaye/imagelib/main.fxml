@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Priority?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane styleClass="app" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="fr.ndiaye.imagelib.controller.MainController">
+
+    <!-- ===== En-tête ===== -->
+    <top>
+        <HBox styleClass="header" alignment="CENTER_LEFT" spacing="14">
+            <Label styleClass="logo" text="◧"/>
+            <VBox spacing="0">
+                <Label styleClass="app-title" text="Gestionnaire d'images"/>
+                <Label fx:id="folderLabel" styleClass="app-subtitle" text="Aucun dossier ouvert"/>
+            </VBox>
+            <Region HBox.hgrow="ALWAYS"/>
+            <TextField fx:id="searchField" styleClass="search" prefWidth="340"
+                       promptText="Rechercher par tag ou par nom…"/>
+            <Button fx:id="clearSearchButton" styleClass="ghost" text="Effacer" onAction="#onClearSearch"/>
+            <Button styleClass="ghost" text="Démo 3D" onAction="#onOpenSurface"/>
+            <Button styleClass="primary" text="Ouvrir un dossier" onAction="#onOpenFolder"/>
+        </HBox>
+    </top>
+
+    <!-- ===== Bibliothèque ===== -->
+    <left>
+        <VBox styleClass="sidebar" prefWidth="330" minWidth="330" spacing="12">
+            <padding><Insets top="16" right="14" bottom="12" left="14"/></padding>
+            <HBox alignment="BASELINE_LEFT">
+                <Label styleClass="section-title" text="BIBLIOTHÈQUE"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Label fx:id="countLabel" styleClass="muted" text=""/>
+            </HBox>
+            <FlowPane fx:id="tagCloud" hgap="6" vgap="6"/>
+            <ListView fx:id="imageList" styleClass="image-list" VBox.vgrow="ALWAYS"/>
+        </VBox>
+    </left>
+
+    <!-- ===== Aperçu ===== -->
+    <center>
+        <StackPane fx:id="previewPane" styleClass="preview-pane">
+            <BorderPane.margin><Insets top="16" right="16" bottom="12" left="16"/></BorderPane.margin>
+            <ImageView fx:id="preview" preserveRatio="true" smooth="true"/>
+            <Label fx:id="placeholder" styleClass="placeholder" text="Ouvrez un dossier d'images pour commencer"
+                   textAlignment="CENTER" wrapText="true"/>
+            <Label fx:id="captionLabel" styleClass="caption" StackPane.alignment="BOTTOM_CENTER">
+                <StackPane.margin><Insets bottom="14"/></StackPane.margin>
+            </Label>
+        </StackPane>
+    </center>
+
+    <!-- ===== Inspecteur : tags, transformations, historique ===== -->
+    <right>
+        <ScrollPane fx:id="inspectorScroll" styleClass="inspector-scroll" fitToWidth="true"
+                    hbarPolicy="NEVER" prefWidth="320" minWidth="320">
+            <VBox fx:id="inspector" styleClass="inspector" spacing="12">
+                <padding><Insets top="16" right="14" bottom="16" left="14"/></padding>
+
+                <Label styleClass="section-title" text="TAGS"/>
+                <FlowPane fx:id="tagsPane" hgap="6" vgap="6" prefWrapLength="270"/>
+                <HBox spacing="8">
+                    <TextField fx:id="newTagField" HBox.hgrow="ALWAYS" promptText="Nouveau tag…"
+                               onAction="#onAddTag"/>
+                    <Button styleClass="primary" text="Ajouter" onAction="#onAddTag"/>
+                </HBox>
+
+                <Region minHeight="6"/>
+                <Label styleClass="section-title" text="SUGGESTIONS"/>
+                <FlowPane fx:id="suggestionPane" hgap="6" vgap="6" prefWrapLength="270"/>
+                <Button fx:id="suggestButton" styleClass="tool" maxWidth="Infinity" text="Suggérer des tags" onAction="#onSuggest"/>
+                <Label fx:id="modelLabel" styleClass="hint" wrapText="true"
+                       text="Un modèle de machine learning apprend de vos autres images déjà taguées."/>
+
+                <Region minHeight="6"/>
+                <Label styleClass="section-title" text="COULEURS DOMINANTES"/>
+                <HBox fx:id="paletteBar" styleClass="palette-bar" spacing="3" minHeight="28" prefHeight="28" maxHeight="28"/>
+
+                <Region minHeight="6"/>
+                <Label styleClass="section-title" text="TRANSFORMATIONS"/>
+                <FlowPane hgap="8" vgap="8" prefWrapLength="280">
+                    <Button styleClass="tool" text="Rotation ↻" onAction="#onRotateRight"/>
+                    <Button styleClass="tool" text="Rotation ↺" onAction="#onRotateLeft"/>
+                    <Button styleClass="tool" text="Miroir" onAction="#onMirror"/>
+                    <Button styleClass="tool" text="Noir et blanc" onAction="#onGrayscale"/>
+                    <Button styleClass="tool" text="Sépia" onAction="#onSepia"/>
+                    <Button styleClass="tool" text="Négatif" onAction="#onInvert"/>
+                    <Button styleClass="tool" text="Luminosité +10 %" onAction="#onBrighter"/>
+                    <Button styleClass="tool" text="Luminosité −10 %" onAction="#onDarker"/>
+                </FlowPane>
+
+                <Region minHeight="6"/>
+                <HBox alignment="BASELINE_LEFT">
+                    <Label styleClass="section-title" text="HISTORIQUE"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Label fx:id="historyCount" styleClass="muted" text=""/>
+                </HBox>
+                <ListView fx:id="historyList" styleClass="history-list" prefHeight="110" minHeight="110" maxHeight="110"/>
+                <HBox spacing="8">
+                    <Button styleClass="ghost" text="Annuler la dernière" onAction="#onUndo"/>
+                    <Button styleClass="ghost" text="Tout effacer" onAction="#onClearHistory"/>
+                </HBox>
+                <Label styleClass="hint"
+                       text="L'historique est enregistré dans l'ordre : à la prochaine ouverture, les transformations sont rejouées automatiquement."
+                       wrapText="true"/>
+
+                <Region minHeight="6"/>
+                <Label styleClass="section-title" text="CHIFFREMENT"/>
+                <HBox spacing="8">
+                    <Button styleClass="tool" HBox.hgrow="ALWAYS" maxWidth="Infinity" text="Chiffrer…" onAction="#onEncrypt"/>
+                    <Button styleClass="tool" HBox.hgrow="ALWAYS" maxWidth="Infinity" text="Déchiffrer…" onAction="#onDecrypt"/>
+                </HBox>
+                <Label styleClass="hint"
+                       text="Chiffre l'image (transformations incluses) avec AES-256 et un mot de passe. Le résultat est un PNG de bruit, enregistré dans le dossier."
+                       wrapText="true"/>
+
+                <Region minHeight="6"/>
+                <Button styleClass="primary" maxWidth="Infinity" text="Exporter l'image en PNG…" onAction="#onExport"/>
+            </VBox>
+        </ScrollPane>
+    </right>
+
+    <!-- ===== Barre d'état ===== -->
+    <bottom>
+        <HBox styleClass="statusbar" alignment="CENTER_LEFT" spacing="10">
+            <Label fx:id="statusLabel" text="Prêt"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Label fx:id="storageLabel" styleClass="muted" text=""/>
+        </HBox>
+    </bottom>
+</BorderPane>

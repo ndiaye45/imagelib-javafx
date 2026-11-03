@@ -1,0 +1,464 @@
+{
+  "images": [
+    {
+      "path": "aurore-2.png",
+      "tags": [
+        "nuit",
+        "nature",
+        "ciel"
+      ],
+      "transformations": []
+    },
+    {
+      "path": "aurore-3.png",
+      "tags": [
+        "nuit",
+        "nature",
+        "ciel"
+      ],
+      "transformations": []
+    },
+    {
+      "path": "aurore-4.png",
+      "tags": [
+        "nuit",
+        "nature",
+        "ciel"
+      ],
+      "transformations": []
+    },
+    {
+      "path": "aurore-5.png",
+      "tags": [
+        "nuit",
+        "nature",
+        "ciel"
+      ],
+      "transformations": []
+    },
+    {
+      "path": "aurore-6.png",
+      "tags": [
+        "nuit",
+        "nature",
+        "ciel"
+      ],
+      "transformations": []
+    },
+    {
+      "path": "aurore.png",
+      "tags": [
+        "nuit",
+        "nature",
+        "ciel"
+      ],
+      "transformations": []
+    },
+    {
+      "path": "coucher-de-soleil-2.png",
+      "tags": [
+        "ciel",
+        "soleil",
+        "nature",
+        "été"
+      ],
+      "transformations": []
+    },
+    {
+      "path": "coucher-de-soleil-3.png",
+      "tags": [
+        "ciel",
+        "soleil",
+        "nature",
+        "été"
+      ],
+      "transformations": []
+    },
+    {
+      "path": "coucher-de-soleil-4.png",
+      "tags": [
+        "ciel",
+        "soleil",
+        "nature",
+        "été"
+      ],
+      "transformations": []
+    },
+    {
+      "path": "coucher-de-soleil-5.png",
+      "tags": [
+        "ciel",
+        "soleil",
+        "nature",
+        "été"
+      ],
+      "transformations": []
+    },
+    {
+      "path": "coucher-de-soleil-6.png",
+      "tags": [
+        "ciel",
+        "soleil",
+        "nature",
+        "été"
+      ],
+      "transformations": []
+    },
+    {
+      "path": "coucher-de-soleil.png",
+      "tags": [
+        "ciel",
+        "soleil",
+        "nature",
+        "été"
+      ],
+      "transformations": [
+        {
+          "type": "sepia",
+          "params": {}
+        }
+      ]
+    },
+    {
+      "path": "desert-2.png",
+      "tags": [
+        "voyage",
+        "chaud",
+        "paysage"
+      ],
+      "transformations": []
+    },
+    {
+      "path": "desert-3.png",
+      "tags": [
+        "voyage",
+        "chaud",
+        "paysage"
+      ],
+      "transformations": []
+    },
+    {
+      "path": "desert-4.png",
+      "tags": [
+        "voyage",
+        "chaud",
+        "paysage"
+      ],
+      "transformations": []
+    },
+    {
+      "path": "desert-5.png",
+      "tags": [
+        "voyage",
+        "chaud",
+        "paysage"
+      ],
+      "transformations": []
+    },
+    {
+      "path": "desert-6.png",
+      "tags": [
+        "voyage",
+        "chaud",
+        "paysage"
+      ],
+      "transformations": []
+    },
+    {
+      "path": "desert.png",
+      "tags": [
+        "voyage",
+        "chaud",
+        "paysage"
+      ],
+      "transformations": []
+    },
+    {
+      "path": "foret-2.png",
+      "tags": [
+        "nature",
+        "paysage",
+        "vert"
+      ],
+      "transformations": []
+    },
+    {
+      "path": "foret-3.png",
+      "tags": [
+        "nature",
+        "paysage",
+        "vert"
+      ],
+      "transformations": []
+    },
+    {
+      "path": "foret-4.png",
+      "tags": [
+        "nature",
+        "paysage",
+        "vert"
+      ],
+      "transformations": []
+    },
+    {
+      "path": "foret-5.png",
+      "tags": [
+        "nature",
+        "paysage",
+        "vert"
+      ],
+      "transformations": []
+    },
+    {
+      "path": "foret-6.png",
+      "tags": [
+        "nature",
+        "paysage",
+        "vert"
+      ],
+      "transformations": []
+    },
+    {
+      "path": "foret.png",
+      "tags": [
+        "nature",
+        "paysage",
+        "vert"
+      ],
+      "transformations": [
+        {
+          "type": "brightness",
+          "params": {
+            "percent": 20.0
+          }
+        }
+      ]
+    },
+    {
+      "path": "geometrie-2.png",
+      "tags": [
+        "abstrait",
+        "couleurs"
+      ],
+      "transformations": []
+    },
+    {
+      "path": "geometrie-3.png",
+      "tags": [
+        "abstrait",
+        "couleurs"
+      ],
+      "transformations": []
+    },
+    {
+      "path": "geometrie-4.png",
+      "tags": [
+        "abstrait",
+        "couleurs"
+      ],
+      "transformations": []
+    },
+    {
+      "path": "geometrie-5.png",
+      "tags": [
+        "abstrait",
+        "couleurs"
+      ],
+      "transformations": []
+    },
+    {
+      "path": "geometrie-6.png",
+      "tags": [
+        "abstrait",
+        "couleurs"
+      ],
+      "transformations": []
+    },
+    {
+      "path": "geometrie.png",
+      "tags": [
+        "abstrait",
+        "couleurs"
+      ],
+      "transformations": [
+        {
+          "type": "mirror",
+          "params": {}
+        },
+        {
+          "type": "rotation",
+          "params": {
+            "angle": 90.0
+          }
+        }
+      ]
+    },
+    {
+      "path": "montagnes-2.png",
+      "tags": [
+        "nature",
+        "paysage",
+        "voyage"
+      ],
+      "transformations": []
+    },
+    {
+      "path": "montagnes-3.png",
+      "tags": [
+        "nature",
+        "paysage",
+        "voyage"
+      ],
+      "transformations": []
+    },
+    {
+      "path": "montagnes-4.png",
+      "tags": [
+        "nature",
+        "paysage",
+        "voyage"
+      ],
+      "transformations": []
+    },
+    {
+      "path": "montagnes-5.png",
+      "tags": [
+        "nature",
+        "paysage",
+        "voyage"
+      ],
+      "transformations": []
+    },
+    {
+      "path": "montagnes-6.png",
+      "tags": [
+        "nature",
+        "paysage",
+        "voyage"
+      ],
+      "transformations": []
+    },
+    {
+      "path": "montagnes.png",
+      "tags": [
+        "nature",
+        "paysage",
+        "voyage"
+      ],
+      "transformations": []
+    },
+    {
+      "path": "plage-2.png",
+      "tags": [
+        "été",
+        "voyage",
+        "soleil",
+        "mer"
+      ],
+      "transformations": []
+    },
+    {
+      "path": "plage-3.png",
+      "tags": [
+        "été",
+        "voyage",
+        "soleil",
+        "mer"
+      ],
+      "transformations": []
+    },
+    {
+      "path": "plage-4.png",
+      "tags": [
+        "été",
+        "voyage",
+        "soleil",
+        "mer"
+      ],
+      "transformations": []
+    },
+    {
+      "path": "plage-5.png",
+      "tags": [
+        "été",
+        "voyage",
+        "soleil",
+        "mer"
+      ],
+      "transformations": []
+    },
+    {
+      "path": "plage-6.png",
+      "tags": [
+        "été",
+        "voyage",
+        "soleil",
+        "mer"
+      ],
+      "transformations": []
+    },
+    {
+      "path": "plage.png",
+      "tags": [
+        "été",
+        "voyage",
+        "soleil",
+        "mer"
+      ],
+      "transformations": []
+    },
+    {
+      "path": "ville-nuit-2.png",
+      "tags": [
+        "ville",
+        "nuit"
+      ],
+      "transformations": []
+    },
+    {
+      "path": "ville-nuit-3.png",
+      "tags": [
+        "ville",
+        "nuit"
+      ],
+      "transformations": []
+    },
+    {
+      "path": "ville-nuit-4.png",
+      "tags": [
+        "ville",
+        "nuit"
+      ],
+      "transformations": []
+    },
+    {
+      "path": "ville-nuit-5.png",
+      "tags": [
+        "ville",
+        "nuit"
+      ],
+      "transformations": []
+    },
+    {
+      "path": "ville-nuit-6.png",
+      "tags": [
+        "ville",
+        "nuit"
+      ],
+      "transformations": []
+    },
+    {
+      "path": "ville-nuit.png",
+      "tags": [
+        "ville",
+        "nuit"
+      ],
+      "transformations": [
+        {
+          "type": "grayscale",
+          "params": {}
+        }
+      ]
+    }
+  ]
+}
